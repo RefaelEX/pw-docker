@@ -1,0 +1,21 @@
+{
+  "name": "pw-docker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "e2e": "npx playwright test",
+    "e2e:docker": "npm run docker:build && npm run docker:run && npm run docker:copyReport",
+    "docker:build": "docker build --no-cache -t my-test .",
+    "docker:run":  "npm run docker:remove && docker run --name my-test my-test",
+    "docker:copyReport": "docker cp my-test:/pw-test/playwright-report .",
+    "docker:remove": "docker rm -f my-test",
+    "report": "npx playwright show-report"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.31.2"
+  }
+}
