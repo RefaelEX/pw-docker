@@ -1,4 +1,4 @@
-## A Sample project of running playwright tests with html report using docker
+## A Sample project of running playwright tests with HTML report using docker
 
 #### Run Tests :
   1. start docker
