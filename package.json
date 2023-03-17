@@ -11,6 +11,8 @@
     "docker:copyReport": "docker cp my-test:/pw-test/playwright-report .",
     "docker:remove:container": "docker rm -f my-test",
     "docker:remove:image": "docker rmi -f my-test",
+
+    "tearDown": "npm run docker:remove:container && npm run docker:remove:image", 
     "report": "npx playwright show-report"
   },
   "keywords": [],
