@@ -1,7 +1,7 @@
 # Use an official Node.js runtime as a parent image
 FROM mcr.microsoft.com/playwright:v1.31.0-focal
 
-# Set the working directory to /app
+# Set the working directory to /pw-test
 WORKDIR /pw-test
 
 # Copy package.json and package-lock.json to the container
