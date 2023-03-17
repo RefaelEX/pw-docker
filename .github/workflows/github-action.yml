@@ -18,17 +18,23 @@ jobs:
 
       - name: copy report from container
         run: npm run docker:copyReport
-
-      - name: Publish HTML report
-        if: always() # We want this to always run, even if test fail prior to this step running
+      
+      - name: upload report artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: playwright-report
+          retention-days: 3
+      
+      - name: Setup Pages
         uses: actions/configure-pages@v2
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
+          # Upload entire repository
           path: playwright-report
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
-
       
