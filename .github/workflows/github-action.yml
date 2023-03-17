@@ -19,22 +19,9 @@ jobs:
       - name: copy report from container
         run: npm run docker:copyReport
       
-      - name: upload report artifact
-        uses: actions/upload-artifact@v3
+      - name: Publish HTML report
+        if: always()
+        uses: actions/github-pages@v4
         with:
-          name: my-artifact
-          path: playwright-report
-          retention-days: 3
-      
-      - name: Setup Pages
-        uses: actions/configure-pages@v2
-        
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          # Upload entire repository
-          path: playwright-report
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
-      
+          branch: gh-pages
+          folder: test-results/mochawesome
